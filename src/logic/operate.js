@@ -1,0 +1,20 @@
+const Big = require('big.js');
+
+const operate = (num1, num2, operation) => {
+  let numb1 = new Big(num1);
+  let numb2 = new Big(num2);
+  switch (operation) {
+    case '+':
+      return numb1.plus(numb2).toString();
+    case '&times;':
+      return numb1.times(numb2).toString();
+    case '&minus;':
+      return numb1.minus(numb2).toString();
+    case '%':
+      return numb1.times(numb2).div(100).toString();
+    case '÷':
+      return numb1.div(numb2).toString();
+  }
+}
+
+export default operate;
