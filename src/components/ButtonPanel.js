@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 const ButtonPanel = () => (
-  <div>
+  <div className="button-groups">
     <div className="btn-grp">
       <Button name="AC" color="#E0E0E0" />
       <Button name="+/-" color="#E0E0E0" />
