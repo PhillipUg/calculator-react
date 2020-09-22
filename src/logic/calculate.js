@@ -1,10 +1,10 @@
 import operate from './operate';
 
 const calculate = (calculator, btn) => {
-  const { total, next, operation } = calculator;
+  let { total, next, operation } = calculator;
   const operators = ['+', '&times;', '&minus;', '÷'];
   const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    
+
   if (btn === '=') {
     if (total && next && operation) {
       total = operate(total, next, operation);
@@ -12,7 +12,7 @@ const calculate = (calculator, btn) => {
       operation = null;
     }
   }
-  
+
   if (btn === '+/-') {
     total = (total * (-1)).toString();
     next = (next * (-1)).toString();
@@ -22,11 +22,12 @@ const calculate = (calculator, btn) => {
     next = (0.01 * total).toString();
     operation = '%';
   }
-  
+
   if (btn === 'AC') {
-    total, next, operation = null;
+    total = null;
+    next = null;
+    operation = null;
   }
-  
 
   if (operators.includes(btn)) {
     operation = btn;
