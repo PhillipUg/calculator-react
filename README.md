@@ -128,4 +128,3 @@ To try it live [click here](https://project-calculator-react.herokuapp.com/)
 ## 📝 License
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
-
