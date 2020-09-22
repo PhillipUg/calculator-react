@@ -30,7 +30,7 @@
   height: 100%;
 }
 
-.last-grp>:first-child{
+.last-grp > :first-child {
   flex: 2.03;
 }
 
