@@ -10,8 +10,6 @@ const operate = (num1, num2, operation) => {
       return numb1.times(numb2).toString();
     case '-':
       return numb1.minus(numb2).toString();
-    case '%':
-      return numb1.times(numb2).div(100).toString();
     case '÷':
       try {
         return numb1.div(numb2).toString();

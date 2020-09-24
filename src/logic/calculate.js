@@ -7,27 +7,33 @@ const calculate = (data, btn) => {
 
   switch (btn) {
     case 'AC':
-    {
-      total = null;
-      next = null;
-      operation = null;
-      break;
-    }
-    case '+/-':
-    {
-      if (total) (total *= (-1));
-      if (next) (next *= (-1));
-      break;
-    }
-    case '=':
-    {
-      if (total && next && operation) {
-        total = operate(total, next, operation);
+      {
+        total = null;
         next = null;
         operation = null;
+        break;
       }
-      break;
-    }
+    case '+/-':
+      {
+        if (total) (total *= (-1));
+        if (next) (next *= (-1));
+        break;
+      }
+    case '%':
+      {
+        next = (0.01 * total).toString();
+        operation = '%';
+        break;
+      }
+    case '=':
+      {
+        if (total && next && operation) {
+          total = operate(total, next, operation);
+          next = null;
+          operation = null;
+        }
+        break;
+      }
     case '.':
       if (next) {
         return { total, next: `${next}.`, operation };
