@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       total: null,
       next: null,
-      operation: null, /*eslint-disable-line*/
+      operation: null,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -19,8 +19,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { total, next } = this.state;
-    const result = next || total || '0';
+    const { total, next, operation } = this.state;
+    const result = next || total || operation || '0';
     return (
       <div id="root-app">
         <Display result={result.toString()} />
