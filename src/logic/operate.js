@@ -13,7 +13,11 @@ const operate = (num1, num2, operation) => {
     case '%':
       return numb1.times(numb2).div(100).toString();
     case '÷':
-      return numb1.div(numb2).toString();
+      try {
+        return numb1.div(numb2).toString();
+      } catch (error) {
+        return 0;
+      }
     default:
       return 0;
   }
