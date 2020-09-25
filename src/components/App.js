@@ -20,10 +20,10 @@ class App extends React.Component {
 
   render() {
     const { total, next, operation } = this.state;
-    const result = next || total || operation || '0';
+    const result = next || total || '0';
     return (
       <div id="root-app">
-        <Display result={result.toString()} />
+        <Display result={result.toString()} operation={operation} />
         <ButtonPanel handleClick={this.handleClick} />
       </div>
     );
