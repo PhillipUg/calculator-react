@@ -2,7 +2,7 @@ import operate from './operate';
 
 const calculate = (data, btn) => {
   let { total, next, operation } = data;
-  const operators = ['+', 'x', '-', '÷', '%'];
+  const operators = ['+', 'x', '-', '÷'];
   const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   switch (btn) {
@@ -22,7 +22,6 @@ const calculate = (data, btn) => {
     case '%':
     {
       next = (0.01 * total).toString();
-      operation = '%';
       break;
     }
     case '=':
@@ -53,6 +52,13 @@ const calculate = (data, btn) => {
   } else if (nums.includes(btn)) {
     total = total ? total + btn : btn;
   }
+
+  if (total && next && operation) {
+    total = operate(total, next, operation);
+    next = null;
+    operation = null;
+  }
+
   return { total, next, operation };
 };
 
