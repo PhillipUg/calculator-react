@@ -1,37 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = () => (
-  <div className="button-groups">
-    <div className="btn-grp">
-      <Button name="AC" color="#E0E0E0" />
-      <Button name="+/-" color="#E0E0E0" />
-      <Button name="%" color="#E0E0E0" />
-      <Button name="÷" />
+const ButtonPanel = ({ handleClick }) => {
+  const buttonGroups = [
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', 'x'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+    ['0', '.', '='],
+  ];
+
+  const orangeBtns = ['÷', 'x', '-', '+', '='];
+
+  const buttonList = buttonGroups.map(btnGrp => (
+    <div className="btn-grp" key={Math.random()}>
+      {
+        btnGrp.map(btn => (orangeBtns.includes(btn) ? <Button key={Math.random()} name={btn} handleClick={handleClick} /> /*eslint-disable-line*/
+          : btn === '0' ? <Button key={Math.random()} name={btn} color="#E0E0E0" wide handleClick={handleClick} />
+            : <Button key={Math.random()} name={btn} color="#E0E0E0" handleClick={handleClick} />))
+      }
     </div>
-    <div className="btn-grp">
-      <Button name="7" color="#E0E0E0" />
-      <Button name="8" color="#E0E0E0" />
-      <Button name="9" color="#E0E0E0" />
-      <Button name="&times;" />
+  ));
+
+  return (
+    <div>
+      { buttonList}
     </div>
-    <div className="btn-grp">
-      <Button name="4" color="#E0E0E0" />
-      <Button name="5" color="#E0E0E0" />
-      <Button name="6" color="#E0E0E0" />
-      <Button name="&minus;" />
-    </div>
-    <div className="btn-grp">
-      <Button name="1" color="#E0E0E0" />
-      <Button name="2" color="#E0E0E0" />
-      <Button name="3" color="#E0E0E0" />
-      <Button name="+" />
-    </div>
-    <div className="btn-grp last-grp">
-      <Button name="0" color="#E0E0E0" wide />
-      <Button name="." color="#E0E0E0" />
-      <Button name="=" />
-    </div>
-  </div>
-);
+  );
+};
+
+ButtonPanel.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
+
 export default ButtonPanel;
