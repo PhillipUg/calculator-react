@@ -21,7 +21,11 @@ const calculate = (data, btn) => {
     }
     case '%':
     {
-      next = (0.01 * total).toString();
+      if (total && next && operation) {
+        next = (0.01 * operate(total, next, operation)).toString();
+      } else {
+        next = (0.01 * total).toString();
+      }
       break;
     }
     case '=':
@@ -45,18 +49,18 @@ const calculate = (data, btn) => {
       break;
   }
 
+  if ((total && next && operation) && operators.includes(btn)) {
+    total = operate(total, next, operation);
+    next = null;
+    operation = '=';
+  }
+
   if (operators.includes(btn)) {
     operation = btn;
   } else if (operation && nums.includes(btn)) {
     next = next ? next + btn : btn;
   } else if (nums.includes(btn)) {
     total = total ? total + btn : btn;
-  }
-
-  if (total && next && operation) {
-    total = operate(total, next, operation);
-    next = null;
-    operation = null;
   }
 
   return { total, next, operation };
